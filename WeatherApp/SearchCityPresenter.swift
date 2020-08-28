@@ -5,6 +5,7 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
     
     private var searchCityViewControllerProtocol: SearchCityViewControllerProtocol
     private var searchCityInteractor: SearchCityInteractorProtocol!
+    private var searchCityRouter: SearchCityRouterProtocol!
     
     init (searchCityViewControllerProtocol: SearchCityViewControllerProtocol) {
         self.searchCityViewControllerProtocol = searchCityViewControllerProtocol
@@ -19,10 +20,14 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
         searchCityInteractor = interactor
     }
     
+    func setRouter(router: SearchCityRouter) {
+        searchCityRouter = router
+    }
+    
     func cellTapped () {
         if searchCityInteractor?.addCity() ?? true {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateCities"), object: nil)
-                searchCityViewControllerProtocol.dismiss()
+            dismissScreen()
             }
         }
     
@@ -33,6 +38,10 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
     func updateTableView() {
         self.searchCityViewControllerProtocol.updateTableView()
     }
+    func dismissScreen() {
+        searchCityRouter.dismissSearchScreen()
+    }
+    
     
     
 }

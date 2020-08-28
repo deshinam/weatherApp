@@ -542,9 +542,25 @@
             filePath = "WeatherApp/Main/CitiesPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "deleteCity(cityId:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "deleteCity(index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC0B40BB-4EBF-4B60-967E-A162076249D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Main/CitiesConfigurator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "configure(viewController:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -38,8 +38,9 @@ class CitiesIntercator: CitiesInteractorProtocol {
     }
     
     
-    func deleteCity (cityId: Int) {
-        if let deletedCity = DataBaseManager.sharedUserCitiesManager.findCityById(cityId: cityId) {
+    func deleteCity (index: Int) {
+        let cityId = citiesWeather![index].id
+        if let deletedCity = DataBaseManager.sharedUserCitiesManager.findCityById(cityId: cityId ) {
             if  DataBaseManager.sharedUserCitiesManager.deleteCity(city: deletedCity) {
                 loadUserCities()
             }
@@ -47,6 +48,10 @@ class CitiesIntercator: CitiesInteractorProtocol {
         
     }
     
+    func getCityWeather(id: Int) -> CityWeather? {
+        return citiesWeather?[id]
+    }
 
     
 }
+

@@ -142,7 +142,7 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
 extension SearchCityViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print ("cancel")
-        self.dismiss(animated: true, completion: nil)
+        searchCityPresenter.dismissScreen()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

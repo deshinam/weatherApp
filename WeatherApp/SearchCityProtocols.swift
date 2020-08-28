@@ -13,6 +13,8 @@ protocol SearchCityPresenterProtocol {
     func getCurrentCityName() -> String?
     func setInteractor(interactor: SearchCityInteractor)
     func updateTableView()
+    func setRouter(router: SearchCityRouter)
+    func dismissScreen()
 }
 
 protocol SearchCityInteractorProtocol {
@@ -20,4 +22,8 @@ protocol SearchCityInteractorProtocol {
     func searchCity(cityName: String)
     func getCurrentCityName() -> String?
     func addCity() -> Bool
+}
+
+protocol SearchCityRouterProtocol {
+    func dismissSearchScreen()
 }

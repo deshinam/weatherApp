@@ -4,14 +4,13 @@ import SwipeCellKit
 class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
 
     var addCityButton: AddElementButton?
-    var citiesPresenter: CitiesPresenterProtocol?
+    var citiesPresenter: CitiesPresenterProtocol!
     
     override func viewDidLoad() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = .white
         setupTableView()
         setupAddCityButton()
-        citiesPresenter = CitiesPresenter(listOfCitiesProtocol: self)
         NotificationCenter.default.addObserver(self, selector: #selector(createArray(_:)), name: NSNotification.Name(rawValue: "updateCities"), object: nil)
         createArray()
     }
@@ -98,11 +97,6 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
     @objc func addCityButtonTapped (sender: AddElementButton!) {
         let router = CitiesRouter()
         router.goToSearch(citiesViewController: self)
-//        let searchCityVC = SearchCityViewController()
-//        searchCityVC.modalPresentationStyle = .popover
-//        let configurator = SearchCityConfigurator()
-//        configurator.configure(viewController: searchCityVC)
-//        self.present(searchCityVC, animated: true, completion: nil)
       }
     func updateCitiesWeather() {
         tableView.reloadData()
@@ -125,6 +119,10 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         self.citiesPresenter = citiesPresenter
     }
     
+    func getTableView() -> UITableView {
+        return tableView
+    }
+    
 }
 
 extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -135,30 +133,22 @@ extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityOverviewTableViewCell", for: indexPath) as! CityOverviewTableViewCell
-//            cell.delegate = self
-//        if citiesPresenter?.citiesWeather?[indexPath.row] != nil {
-//            cell.city = citiesPresenter?.citiesWeather![indexPath.row]
-//        } else {
-//                cell.city = nil
-//        }
+        let cell = citiesPresenter.getCell(indexPath: indexPath)
+        cell.delegate = self
         return cell
-
     }
 }
 
-//extension CitiesViewController: SwipeTableViewCellDelegate {
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-//        guard orientation == .right else { return nil }
-//
-//        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-//            self.citiesPresenter?.deleteCity(cityId: self.citiesPresenter!.citiesWeather![indexPath.row].id)
-//        }
-//
-//        // customize the action appearance
-//        deleteAction.image = UIImage(named: "trash")
-//        return [deleteAction]
-//    }
-//}
+extension CitiesViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in
+            self?.citiesPresenter?.deleteCity(index: indexPath.row)
+        }
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "trash")
+        return [deleteAction]
+    }
+}
 
 
