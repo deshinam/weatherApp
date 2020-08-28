@@ -16,7 +16,7 @@ class UserCities: Object {
 
     }
     
-    override required init() {
+    required init() {
         cityId = 0
         cityName = ""
     }

@@ -137,6 +137,10 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
         self.dismiss(animated: true, completion: nil)
     }
     
+    func getTableView() -> UITableView {
+        return listIfCitiesTableView
+    }
+    
 }
 
 extension SearchCityViewController: UISearchBarDelegate {
@@ -158,8 +162,7 @@ extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellFactory = CellFactory(tableView: tableView)
-        var cell = cellFactory.createCell(type: .searchCell, indexPath: indexPath)
+        let cell = searchCityPresenter.getCell(indexPath: indexPath)
         cell.textLabel?.text = searchCityPresenter?.getCurrentCityName() ?? defaultSearchText()
         return cell
     }

@@ -24,8 +24,6 @@ struct NetworkManager {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) {  (data, response, error) in
-                print(error?.localizedDescription)
-                print(String(data:data!, encoding: .utf8))
                 if error != nil {
                     performRequestOnComplete(nil)
                 }

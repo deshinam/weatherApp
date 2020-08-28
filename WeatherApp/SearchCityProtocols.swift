@@ -1,9 +1,10 @@
-import Foundation
+import UIKit
 
 protocol SearchCityViewControllerProtocol {
     func updateTableView()
     func setPresenter (presenter: SearchCityPresenter)
     func dismiss ()
+    func getTableView() -> UITableView
 }
 
 protocol SearchCityPresenterProtocol {
@@ -15,6 +16,7 @@ protocol SearchCityPresenterProtocol {
     func updateTableView()
     func setRouter(router: SearchCityRouter)
     func dismissScreen()
+    func getCell(indexPath: IndexPath)-> UITableViewCell
 }
 
 protocol SearchCityInteractorProtocol {

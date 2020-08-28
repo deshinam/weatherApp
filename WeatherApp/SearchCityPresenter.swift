@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 class SearchCityPresenter: SearchCityPresenterProtocol {
 
@@ -6,9 +6,11 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
     private var searchCityViewControllerProtocol: SearchCityViewControllerProtocol
     private var searchCityInteractor: SearchCityInteractorProtocol!
     private var searchCityRouter: SearchCityRouterProtocol!
+    private var cellFactory: CellFactory
     
     init (searchCityViewControllerProtocol: SearchCityViewControllerProtocol) {
         self.searchCityViewControllerProtocol = searchCityViewControllerProtocol
+               cellFactory = CellFactory(tableView: searchCityViewControllerProtocol.getTableView() )
     }
 
     func searchCityWeather(cityName: String)  {
@@ -42,7 +44,9 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
         searchCityRouter.dismissSearchScreen()
     }
     
-    
+    func getCell(indexPath: IndexPath)-> UITableViewCell {
+        return cellFactory.createCell(type: .searchCell, indexPath: indexPath)
+    }
     
 }
 
