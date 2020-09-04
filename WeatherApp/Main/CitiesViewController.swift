@@ -33,7 +33,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
     var defaultLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
-        lbl.font = UIFont.boldSystemFont(ofSize: 16)
+        lbl.font = UIFont.boldSystemFont(ofSize: 18)
         lbl.text = "Choose a city to see the weather forecast"
         lbl.textAlignment = .center
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +48,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        let tableViewTopConstraint = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 30)
+        let tableViewTopConstraint = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 70)
         let tableViewBottomConstraint = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -80)
         let tableViewLeftConstraint = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
         let tableViewRightConstraint = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
@@ -63,7 +63,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         let addCityButtonCenterXConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
         let addCityButtonWidthConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 40)
         let addCityButtonHeightConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 40)
-        let addCityButtonBottomConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20)
+        let addCityButtonBottomConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -40)
 
         NSLayoutConstraint.activate([
                 addCityButtonWidthConstraint, addCityButtonHeightConstraint, addCityButtonBottomConstraint,
