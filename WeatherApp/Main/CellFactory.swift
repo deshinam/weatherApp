@@ -1,6 +1,6 @@
 import UIKit
 
-class CellFactory {
+final class CellFactory {
     
     private var tableView: UITableView
     

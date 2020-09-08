@@ -1,7 +1,7 @@
 import UIKit
 import SwipeCellKit
 
-class CityOverviewTableViewCell: SwipeTableViewCell {
+final class CityOverviewTableViewCell: SwipeTableViewCell {
     
     var city : CityWeather? {
         didSet {
@@ -11,7 +11,7 @@ class CityOverviewTableViewCell: SwipeTableViewCell {
         }
     }
     
-    var cityNameLabel : UILabel = {
+    private var cityNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
@@ -21,8 +21,7 @@ class CityOverviewTableViewCell: SwipeTableViewCell {
     return lbl
     }()
     
-    
-    var cityTemputureLabel : UILabel = {
+    private var cityTemputureLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
@@ -33,8 +32,7 @@ class CityOverviewTableViewCell: SwipeTableViewCell {
     
     }()
     
-    
-    var cityWeatherImage: UIImageView = {
+    private var cityWeatherImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +70,6 @@ class CityOverviewTableViewCell: SwipeTableViewCell {
             tempLeftConstraint, tempCenterYConstraint, tempWidthConstraint, tempHeightConstraint
             ])
        }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

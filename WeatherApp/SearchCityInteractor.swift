@@ -1,7 +1,7 @@
 import Foundation
 
-class SearchCityInteractor: SearchCityInteractorProtocol {
-    private var presenter: SearchCityPresenterProtocol!
+final class SearchCityInteractor: SearchCityInteractorProtocol {
+    private weak var presenter: SearchCityPresenterProtocol!
     private var networkManager: NetworkManager = NetworkManager()
     private var dataBaseManager: DataBaseManager = DataBaseManager.sharedUserCitiesManager
     private var currentCity: CityWeather?
@@ -28,12 +28,10 @@ class SearchCityInteractor: SearchCityInteractorProtocol {
            return currentCity?.name
     }
     
-    
     func addCity() -> Bool {
         guard currentCity != nil else {
             return false
         }
-            
         let newCity = UserCities(cityId: currentCity!.id, cityName: currentCity!.name)
         dataBaseManager.saveCity(newCity: newCity)
             return true

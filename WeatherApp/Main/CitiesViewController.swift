@@ -1,10 +1,35 @@
 import UIKit
 import SwipeCellKit
 
-class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
+final class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
 
-    var addCityButton: AddElementButton?
-    var citiesPresenter: CitiesPresenterProtocol!
+    private var addCityButton: AddElementButton?
+    private var citiesPresenter: CitiesPresenterProtocol!
+    
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(CityOverviewTableViewCell.self, forCellReuseIdentifier: "CityOverviewTableViewCell")
+        tableView.separatorStyle = .none
+        return tableView
+    }()
+    
+    private var defaultScreen : UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+      }()
+    
+    private var defaultLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .black
+        lbl.font = UIFont.boldSystemFont(ofSize: 18)
+        lbl.text = "Choose a city to see the weather forecast"
+        lbl.textAlignment = .center
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+    return lbl
+    }()
     
     override func viewDidLoad() {
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -15,36 +40,23 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         createArray()
     }
     
-    var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CityOverviewTableViewCell.self, forCellReuseIdentifier: "CityOverviewTableViewCell")
-        tableView.separatorStyle = .none
-        return tableView
-    }()
-    
-    var defaultScreen : UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-      }()
-    
-    var defaultLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .black
-        lbl.font = UIFont.boldSystemFont(ofSize: 18)
-        lbl.text = "Choose a city to see the weather forecast"
-        lbl.textAlignment = .center
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-    return lbl
-    }()
-    
-    @objc func createArray(_ sender: Any? = nil) {
+    @objc private func createArray(_ sender: Any? = nil) {
         citiesPresenter?.loadUserCities()
     }
+    
+    func setPresenter(citiesPresenter: CitiesPresenterProtocol) {
+        self.citiesPresenter = citiesPresenter
+    }
+    
+    func getTableView() -> UITableView {
+        return tableView
+    }
+    
+    func updateCitiesWeather() {
+        tableView.reloadData()
+    }
 
-    func setupTableView () {
+    private func setupTableView () {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,7 +69,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         ])
     }
     
-    func setupAddCityButton() {
+    private func setupAddCityButton() {
         addCityButton = AddElementButton(frame: .zero)
         view.addSubview(addCityButton!)
         let addCityButtonCenterXConstraint = NSLayoutConstraint(item: addCityButton as Any, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
@@ -72,7 +84,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         addCityButton?.addTarget(self, action: #selector(addCityButtonTapped(sender:)), for: .touchUpInside)
     }
     
-    func setupDefaultScreen() {
+    private func setupDefaultScreen() {
         view.addSubview(defaultScreen)
         if addCityButton != nil {
             view.bringSubviewToFront(addCityButton!)
@@ -94,15 +106,7 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         
     }
     
-    @objc func addCityButtonTapped (sender: AddElementButton!) {
-        let router = CitiesRouter()
-        router.goToSearch(citiesViewController: self)
-      }
-    func updateCitiesWeather() {
-        tableView.reloadData()
-    }
-    
-    func setupUI() {
+    private func setupUI() {
         if citiesPresenter?.isEmptyCityWeather() ?? true {
             setupDefaultScreen()
             defaultScreen.isHidden = false
@@ -115,12 +119,9 @@ class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
         }
     }
     
-    func setPresenter(citiesPresenter: CitiesPresenterProtocol) {
-        self.citiesPresenter = citiesPresenter
-    }
-    
-    func getTableView() -> UITableView {
-        return tableView
+    @objc private func addCityButtonTapped (sender: AddElementButton!) {
+        let router = CitiesRouter()
+        router.openSearchModule(citiesViewController: self)
     }
     
 }

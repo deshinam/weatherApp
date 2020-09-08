@@ -1,9 +1,8 @@
 import UIKit
 
-class SearchCityPresenter: SearchCityPresenterProtocol {
+final class SearchCityPresenter: SearchCityPresenterProtocol {
 
-    
-    private var searchCityViewControllerProtocol: SearchCityViewControllerProtocol
+    private weak var searchCityViewControllerProtocol: SearchCityViewControllerProtocol?
     private var searchCityInteractor: SearchCityInteractorProtocol!
     private var searchCityRouter: SearchCityRouterProtocol!
     private var cellFactory: CellFactory
@@ -38,10 +37,13 @@ class SearchCityPresenter: SearchCityPresenterProtocol {
     }
     
     func updateTableView() {
-        self.searchCityViewControllerProtocol.updateTableView()
+        if self.searchCityViewControllerProtocol != nil {
+            self.searchCityViewControllerProtocol!.updateTableView()
+        }
+        
     }
     func dismissScreen() {
-        searchCityRouter.dismissSearchScreen()
+        searchCityRouter.closeSearchModule()
     }
     
     func getCell(indexPath: IndexPath)-> UITableViewCell {

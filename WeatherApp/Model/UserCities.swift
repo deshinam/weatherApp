@@ -2,7 +2,7 @@
 import Foundation
 import RealmSwift
 
-class UserCities: Object {
+final class UserCities: Object {
     @objc dynamic var cityId: Int
     @objc dynamic var cityName: String
     

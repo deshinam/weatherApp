@@ -1,9 +1,8 @@
 import Foundation
 
-class CitiesPresenter: CitiesPresenterProtocol {
-
+final class CitiesPresenter: CitiesPresenterProtocol {
     
-    private var citiesViewControllerProtocol: CitiesViewControllerProtocol
+    private weak var citiesViewControllerProtocol: CitiesViewControllerProtocol?
     private var citiesInteractor: CitiesInteractorProtocol!
     private var cellFactory: CellFactory
     
@@ -31,7 +30,9 @@ class CitiesPresenter: CitiesPresenterProtocol {
     }
 
     func updateTableView() {
-        self.citiesViewControllerProtocol.updateCitiesWeather()
+        if self.citiesViewControllerProtocol != nil {
+            self.citiesViewControllerProtocol!.updateCitiesWeather()
+        }
     }
     
     func setInteractor(citiesInteractor: CitiesInteractorProtocol) {

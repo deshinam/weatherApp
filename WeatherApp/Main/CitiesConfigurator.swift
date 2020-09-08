@@ -1,7 +1,6 @@
 import Foundation
 
-
-class CitiesConfigurator {
+final class CitiesConfigurator {
 
     func configure (viewController: CitiesViewControllerProtocol) {
         let presenter = CitiesPresenter(citiesViewControllerProtocol: viewController)

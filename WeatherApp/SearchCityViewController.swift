@@ -1,10 +1,36 @@
 import UIKit
 
-class SearchCityViewController: UIViewController, SearchCityViewControllerProtocol {
+final class SearchCityViewController: UIViewController, SearchCityViewControllerProtocol {
     
     private var searchCityPresenter: SearchCityPresenterProtocol!
     private var gradientLayer = CAGradientLayer()
 
+    private var searchHeader : UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private var searchField: UISearchBar = {
+        let search = UISearchBar()
+        search.showsCancelButton = true
+        search.backgroundColor = .darkGray
+        search.translatesAutoresizingMaskIntoConstraints = false
+
+        return search
+    }()
+    
+    private var headerLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Enter city"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont(name: label.font.fontName, size: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemGray5
@@ -16,33 +42,7 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
         super.viewWillAppear(animated)
     }
     
-    var searchHeader : UIView = {
-        let view = UIView()
-        view.backgroundColor = .darkGray
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    var searchField: UISearchBar = {
-        let search = UISearchBar()
-        search.showsCancelButton = true
-        search.backgroundColor = .darkGray
-        search.translatesAutoresizingMaskIntoConstraints = false
-
-        return search
-    }()
-    
-    var headerLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Enter city"
-        label.textAlignment = .center
-        label.textColor = .white
-        label.font = UIFont(name: label.font.fontName, size: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    var listIfCitiesTableView: UITableView = {
+    private var listIfCitiesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CityCell")
@@ -63,7 +63,6 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
         setupConstraints()
         changeBackgroundSearchColor()
     }
-    
     
     private func changeBackgroundSearchColor() {
         searchField.backgroundImage = UIImage()
@@ -104,7 +103,6 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
             headerLabelLeftConstraint, headerLabelRightConstraint, headerLabelHeightConstraint, headerLabelTopConstraint,
             listOfCitiesTVLeftConstraint, listOfCitiesTVRightConstraint, listOfCitiesTVBottomConstraint, listOfCitiesTVTopConstraint
         ])
-        
     }
     
     private func setGradientBackground() {
@@ -117,13 +115,7 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
-    func updateTableView() {
-        listIfCitiesTableView.reloadData()
-    }
-    
-    func setPresenter(presenter: SearchCityPresenter) {
-        searchCityPresenter = presenter
-    }
+
     
     private func defaultSearchText () -> String {
         if searchField.searchTextField.text?.count == 0 {
@@ -131,6 +123,14 @@ class SearchCityViewController: UIViewController, SearchCityViewControllerProtoc
         } else {
             return "City not found"
         }
+    }
+    
+    func updateTableView() {
+        listIfCitiesTableView.reloadData()
+    }
+    
+    func setPresenter(presenter: SearchCityPresenter) {
+        searchCityPresenter = presenter
     }
     
     func dismiss() {

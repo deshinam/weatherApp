@@ -1,13 +1,13 @@
 import UIKit
 
-protocol SearchCityViewControllerProtocol {
+protocol SearchCityViewControllerProtocol: class {
     func updateTableView()
     func setPresenter (presenter: SearchCityPresenter)
     func dismiss ()
     func getTableView() -> UITableView
 }
 
-protocol SearchCityPresenterProtocol {
+protocol SearchCityPresenterProtocol: class {
     
     func searchCityWeather(cityName: String)
     func cellTapped ()
@@ -27,5 +27,5 @@ protocol SearchCityInteractorProtocol {
 }
 
 protocol SearchCityRouterProtocol {
-    func dismissSearchScreen()
+    func closeSearchModule()
 }

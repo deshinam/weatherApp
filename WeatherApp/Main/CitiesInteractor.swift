@@ -1,11 +1,10 @@
 import Foundation
 
-class CitiesIntercator: CitiesInteractorProtocol {
+final class CitiesIntercator: CitiesInteractorProtocol {
     
     private var networkManager = NetworkManager()
     private var citiesWeather: [CityWeather]?
-    private var presenter: CitiesPresenterProtocol!
-    
+    private weak var presenter: CitiesPresenterProtocol!
     
     init(presenter: CitiesPresenterProtocol) {
         self.presenter = presenter
@@ -37,7 +36,6 @@ class CitiesIntercator: CitiesInteractorProtocol {
         }
     }
     
-    
     func deleteCity (index: Int) {
         let cityId = citiesWeather![index].id
         if let deletedCity = DataBaseManager.sharedUserCitiesManager.findCityById(cityId: cityId ) {
@@ -51,7 +49,6 @@ class CitiesIntercator: CitiesInteractorProtocol {
     func getCityWeather(id: Int) -> CityWeather? {
         return citiesWeather?[id]
     }
-
     
 }
 

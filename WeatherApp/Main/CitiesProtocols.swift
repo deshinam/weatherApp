@@ -1,12 +1,12 @@
 import UIKit
 
-protocol CitiesViewControllerProtocol {
+protocol CitiesViewControllerProtocol: class {
     func updateCitiesWeather()
     func setPresenter(citiesPresenter: CitiesPresenterProtocol)
     func getTableView() -> UITableView
 }
 
-protocol CitiesPresenterProtocol {
+protocol CitiesPresenterProtocol: class {
     func updateTableView()
     func setInteractor(citiesInteractor: CitiesInteractorProtocol)
     func cityWeatherCount() -> Int

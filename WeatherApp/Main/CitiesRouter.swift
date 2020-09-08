@@ -1,10 +1,10 @@
 import UIKit
 
-class CitiesRouter: CitiesRouterProtocol {
+final class CitiesRouter: CitiesRouterProtocol {
     
-    weak var searchCityVC: SearchCityViewController!
+    private weak var searchCityVC: SearchCityViewController!
     
-    func goToSearch(citiesViewController: CitiesViewController) {
+    func openSearchModule(citiesViewController: CitiesViewController) {
         let searchCityVC = SearchCityViewController()
         searchCityVC.modalPresentationStyle = .popover
         let configurator = SearchCityConfigurator()

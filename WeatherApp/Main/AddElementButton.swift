@@ -1,6 +1,6 @@
 import UIKit
 
-class AddElementButton: UIButton {
+final class AddElementButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -14,7 +14,7 @@ class AddElementButton: UIButton {
         setConstraints()
     }
     
-    var image : UIImageView = {
+    private var image : UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "plus")
         view.contentMode = .scaleAspectFit
@@ -24,13 +24,12 @@ class AddElementButton: UIButton {
         return view
     }()
     
-    func setConstraints() {
+    private func setConstraints() {
         let imageLeftConstraint = NSLayoutConstraint(item: image, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 10)
         let imageRightConstraint = NSLayoutConstraint(item: image, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -10)
         let imageCenterYConstraint = NSLayoutConstraint(item: image, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
         let imageCenterXConstraint = NSLayoutConstraint(item: image, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         
-
         NSLayoutConstraint.activate([
             imageLeftConstraint, imageRightConstraint,
             imageCenterYConstraint, imageCenterXConstraint
@@ -40,5 +39,4 @@ class AddElementButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

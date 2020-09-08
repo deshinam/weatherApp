@@ -1,13 +1,13 @@
 import Foundation
 
-class SearchCityRouter: SearchCityRouterProtocol {
+final class SearchCityRouter: SearchCityRouterProtocol {
     
-    var searchCityVC: SearchCityViewControllerProtocol!
+    private var searchCityVC: SearchCityViewControllerProtocol!
     
     init(searchCityVC: SearchCityViewControllerProtocol) {
         self.searchCityVC = searchCityVC
     }
-    func dismissSearchScreen() {
+    func closeSearchModule() {
         searchCityVC.dismiss()
     }
 }
