@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 
 struct NetworkManager {
+    // MARK: — Public Properties
     let weatherURLByCityName = "https://api.openweathermap.org/data/2.5/weather?appid=04d9b06b9d3a43d2680c28c9f90e9ed2&units=metric"
     let weatherURLById = "https://api.openweathermap.org/data/2.5/group?id="
     
@@ -10,6 +11,7 @@ struct NetworkManager {
         case byIds
     }
     
+    // MARK: — Public Methods
     func fetchWeather(cityName: String, onComplete: @escaping ([CityWeather]?) -> Void ) {
         let urlString = "\(weatherURLByCityName)&q=\(cityName)"
         performRequest(with: urlString, performRequestOnComplete: onComplete, requestType: .byName)
@@ -81,7 +83,6 @@ struct NetworkManager {
             return weather
             
         } catch {
-            //            delegate?.didFailWithError(error: error)
             return nil
         }
     }

@@ -3,6 +3,7 @@ import SwipeCellKit
 
 final class CityOverviewTableViewCell: SwipeTableViewCell {
     
+    // MARK: — Public Properties
     var city : CityWeather? {
         didSet {
         cityNameLabel.text = city?.name
@@ -11,6 +12,7 @@ final class CityOverviewTableViewCell: SwipeTableViewCell {
         }
     }
     
+    // MARK: — Private Properties
     private var cityNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -39,6 +41,7 @@ final class CityOverviewTableViewCell: SwipeTableViewCell {
     return image
     }()
     
+    // MARK: — Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(cityNameLabel)

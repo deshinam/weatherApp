@@ -2,6 +2,18 @@ import UIKit
 
 final class AddElementButton: UIButton {
 
+    // MARK: — Private Properties
+    private var image : UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "plus")
+        view.contentMode = .scaleAspectFit
+        view.frame.size.width = 30
+        view.frame.size.height = 30
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // MARK: — Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -14,16 +26,11 @@ final class AddElementButton: UIButton {
         setConstraints()
     }
     
-    private var image : UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(systemName: "plus")
-        view.contentMode = .scaleAspectFit
-        view.frame.size.width = 30
-        view.frame.size.height = 30
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK: — Private Methods
     private func setConstraints() {
         let imageLeftConstraint = NSLayoutConstraint(item: image, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 10)
         let imageRightConstraint = NSLayoutConstraint(item: image, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -10)
@@ -34,9 +41,5 @@ final class AddElementButton: UIButton {
             imageLeftConstraint, imageRightConstraint,
             imageCenterYConstraint, imageCenterXConstraint
         ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

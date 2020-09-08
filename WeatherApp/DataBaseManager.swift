@@ -3,12 +3,17 @@ import RealmSwift
 
 struct DataBaseManager {
 
+    // MARK: — Private Properties
     private var realm = try! Realm()
+    
+    // MARK: — Public Properties
     static var sharedUserCitiesManager = DataBaseManager()
     var currentUserCities: Results <UserCities>?
 
+    // MARK: — Initializers
     private init()  {}
 
+    // MARK: — Public Methods
     mutating func loadCities () -> Results <UserCities>?  {
         currentUserCities = realm.objects(UserCities.self)
         return currentUserCities
@@ -29,20 +34,16 @@ struct DataBaseManager {
     }
     
     mutating func deleteCity (city: UserCities) -> Bool {
-        
         var result = false
         do {
             try realm.write()  {
                 realm.delete(city)
                 result = true
-                
             }
         } catch {
             print (error)
-            
         }
         return result
-        
     }
 
 }

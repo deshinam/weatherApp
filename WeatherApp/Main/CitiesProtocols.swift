@@ -25,7 +25,6 @@ protocol CitiesInteractorProtocol {
 }
 
 protocol CitiesRouterProtocol {
-    
 }
 
 

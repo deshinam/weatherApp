@@ -1,7 +1,8 @@
 import UIKit
 
-final class SearchCityViewController: UIViewController, SearchCityViewControllerProtocol {
+final class SearchCityViewController: UIViewController {
     
+    // MARK: — Private Properties
     private var searchCityPresenter: SearchCityPresenterProtocol!
     private var gradientLayer = CAGradientLayer()
 
@@ -31,6 +32,14 @@ final class SearchCityViewController: UIViewController, SearchCityViewController
         return label
     }()
     
+    private var listIfCitiesTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CityCell")
+        return tableView
+    }()
+    
+    // MARK: — Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemGray5
@@ -42,13 +51,7 @@ final class SearchCityViewController: UIViewController, SearchCityViewController
         super.viewWillAppear(animated)
     }
     
-    private var listIfCitiesTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CityCell")
-        return tableView
-    }()
-    
+    // MARK: — Private Methods
     private func configureUI() {
         view.addSubview(searchHeader)
         view.addSubview(listIfCitiesTableView)
@@ -114,9 +117,7 @@ final class SearchCityViewController: UIViewController, SearchCityViewController
         gradientLayer.frame = self.view.bounds
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
-    
 
-    
     private func defaultSearchText () -> String {
         if searchField.searchTextField.text?.count == 0 {
             return ""
@@ -124,7 +125,9 @@ final class SearchCityViewController: UIViewController, SearchCityViewController
             return "City not found"
         }
     }
-    
+}
+
+extension SearchCityViewController: SearchCityViewControllerProtocol {
     func updateTableView() {
         listIfCitiesTableView.reloadData()
     }
@@ -140,7 +143,6 @@ final class SearchCityViewController: UIViewController, SearchCityViewController
     func getTableView() -> UITableView {
         return listIfCitiesTableView
     }
-    
 }
 
 extension SearchCityViewController: UISearchBarDelegate {

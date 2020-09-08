@@ -1,19 +1,19 @@
 import Foundation
 
-final class CitiesIntercator: CitiesInteractorProtocol {
+final class CitiesIntercator {
     
+    // MARK: — Private Properties
     private var networkManager = NetworkManager()
     private var citiesWeather: [CityWeather]?
     private weak var presenter: CitiesPresenterProtocol!
     
+    // MARK: — Initializers
     init(presenter: CitiesPresenterProtocol) {
         self.presenter = presenter
     }
-    
-    func isEmptyCityWeather() -> Bool {
-        return self.citiesWeather?.count == nil
-    }
-    
+}
+
+extension CitiesIntercator: CitiesInteractorProtocol {
     func cityWeatherCount() -> Int? {
         return self.citiesWeather?.count
     }
@@ -43,12 +43,10 @@ final class CitiesIntercator: CitiesInteractorProtocol {
                 loadUserCities()
             }
         }
-        
     }
     
     func getCityWeather(id: Int) -> CityWeather? {
         return citiesWeather?[id]
     }
-    
 }
 

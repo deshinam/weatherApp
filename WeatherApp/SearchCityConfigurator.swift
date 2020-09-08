@@ -8,6 +8,5 @@ final class SearchCityConfigurator {
         viewController.setPresenter(presenter: presenter)
         presenter.setInteractor(interactor: interactor)
         presenter.setRouter(router: router)
-
     }
 }

@@ -1,50 +1,53 @@
 import Foundation
 
-final class CitiesPresenter: CitiesPresenterProtocol {
+final class CitiesPresenter {
     
+    // MARK: — Private Properties
     private weak var citiesViewControllerProtocol: CitiesViewControllerProtocol?
     private var citiesInteractor: CitiesInteractorProtocol!
     private var cellFactory: CellFactory
     
-    
+    // MARK: — Initializers
     init (citiesViewControllerProtocol: CitiesViewControllerProtocol) {
         self.citiesViewControllerProtocol = citiesViewControllerProtocol
         cellFactory = CellFactory(tableView: citiesViewControllerProtocol.getTableView() )
     }
-    
-    func loadUserCities () {
-        citiesInteractor.loadUserCities()
-    }
-    
-    func deleteCity (index: Int) {
-        citiesInteractor.deleteCity(index: index)
-    }
-    
-    
-    func isEmptyCityWeather() -> Bool {
-        return citiesInteractor.cityWeatherCount() == nil
-    }
+}
 
-    func cityWeatherCount() -> Int {
-        return citiesInteractor.cityWeatherCount() ?? 1
-    }
+extension CitiesPresenter: CitiesPresenterProtocol {
+     // MARK: — Public Methods
+     func loadUserCities () {
+         citiesInteractor.loadUserCities()
+     }
+     
+     func deleteCity (index: Int) {
+         citiesInteractor.deleteCity(index: index)
+     }
+     
+     
+     func isEmptyCityWeather() -> Bool {
+         return citiesInteractor.cityWeatherCount() == nil
+     }
 
-    func updateTableView() {
-        if self.citiesViewControllerProtocol != nil {
-            self.citiesViewControllerProtocol!.updateCitiesWeather()
-        }
-    }
+     func cityWeatherCount() -> Int {
+         return citiesInteractor.cityWeatherCount() ?? 1
+     }
+
+     func updateTableView() {
+         if self.citiesViewControllerProtocol != nil {
+             self.citiesViewControllerProtocol!.updateCitiesWeather()
+         }
+     }
+     
+     func setInteractor(citiesInteractor: CitiesInteractorProtocol) {
+         self.citiesInteractor = citiesInteractor
+     }
+     
+     func getCityWeather(id: Int) -> CityWeather? {
+         return citiesInteractor.getCityWeather(id: id)
+     }
     
-    func setInteractor(citiesInteractor: CitiesInteractorProtocol) {
-        self.citiesInteractor = citiesInteractor
-    }
-    
-    func getCityWeather(id: Int) -> CityWeather? {
-        return citiesInteractor.getCityWeather(id: id)
-    }
-   
-    func getCell(indexPath: IndexPath)-> CityOverviewTableViewCell {
-        return cellFactory.createCell(type: .cityWeather, indexPath: indexPath, cityWeather: getCityWeather(id: indexPath.row)) as! CityOverviewTableViewCell
-    }
-    
+     func getCell(indexPath: IndexPath)-> CityOverviewTableViewCell {
+         return cellFactory.createCell(type: .cityWeather, indexPath: indexPath, cityWeather: getCityWeather(id: indexPath.row)) as! CityOverviewTableViewCell
+     }
 }

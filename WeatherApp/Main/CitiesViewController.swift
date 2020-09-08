@@ -1,8 +1,9 @@
 import UIKit
 import SwipeCellKit
 
-final class CitiesViewController: UIViewController, CitiesViewControllerProtocol {
+final class CitiesViewController: UIViewController {
 
+    // MARK: — Private Properties
     private var addCityButton: AddElementButton?
     private var citiesPresenter: CitiesPresenterProtocol!
     
@@ -31,6 +32,7 @@ final class CitiesViewController: UIViewController, CitiesViewControllerProtocol
     return lbl
     }()
     
+    // MARK: — Lifecycle
     override func viewDidLoad() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = .white
@@ -39,23 +41,8 @@ final class CitiesViewController: UIViewController, CitiesViewControllerProtocol
         NotificationCenter.default.addObserver(self, selector: #selector(createArray(_:)), name: NSNotification.Name(rawValue: "updateCities"), object: nil)
         createArray()
     }
-    
-    @objc private func createArray(_ sender: Any? = nil) {
-        citiesPresenter?.loadUserCities()
-    }
-    
-    func setPresenter(citiesPresenter: CitiesPresenterProtocol) {
-        self.citiesPresenter = citiesPresenter
-    }
-    
-    func getTableView() -> UITableView {
-        return tableView
-    }
-    
-    func updateCitiesWeather() {
-        tableView.reloadData()
-    }
 
+    // MARK: — Private Methods
     private func setupTableView () {
         view.addSubview(tableView)
         tableView.delegate = self
@@ -103,7 +90,6 @@ final class CitiesViewController: UIViewController, CitiesViewControllerProtocol
              defaultScreenTopConstraint, defaultScreenBottomConstraint, defaultScreenLeftConstraint, defaultScreenRightConstraint,
              defaultLabelLeftConstraint, defaultLabelRightConstraint, defaultLabelCenterYConstraint
          ])
-        
     }
     
     private func setupUI() {
@@ -119,6 +105,10 @@ final class CitiesViewController: UIViewController, CitiesViewControllerProtocol
         }
     }
     
+    @objc private func createArray(_ sender: Any? = nil) {
+        citiesPresenter?.loadUserCities()
+    }
+    
     @objc private func addCityButtonTapped (sender: AddElementButton!) {
         let router = CitiesRouter()
         router.openSearchModule(citiesViewController: self)
@@ -126,6 +116,21 @@ final class CitiesViewController: UIViewController, CitiesViewControllerProtocol
     
 }
 
+extension CitiesViewController: CitiesViewControllerProtocol {
+    func setPresenter(citiesPresenter: CitiesPresenterProtocol) {
+        self.citiesPresenter = citiesPresenter
+    }
+    
+    func getTableView() -> UITableView {
+        return tableView
+    }
+    
+    func updateCitiesWeather() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: — Table Data Sourse
 extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         setupUI()
@@ -140,6 +145,7 @@ extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: — Swipe Cell Delegate
 extension CitiesViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
