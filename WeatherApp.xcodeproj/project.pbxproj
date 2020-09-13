@@ -159,14 +159,13 @@
 		C792FF5C24E16C7A00F95775 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				C792FFB724F3E64000F95775 /* Services */,
-				C792FFB324F3DEE400F95775 /* Modules */,
-				C792FF5D24E16C7A00F95775 /* AppDelegate.swift */,
-				C792FF5F24E16C7A00F95775 /* SceneDelegate.swift */,
+				C7FDDAEE250E100E00211691 /* Application */,
+				C7FDDAEB250E0FCF00211691 /* Modules */,
+				C7FDDAEA250E0FAE00211691 /* UI */,
+				C7FDDAE9250E0F7400211691 /* Services */,
 				C792FF6624E16C7D00F95775 /* Assets.xcassets */,
 				C792FF6824E16C7D00F95775 /* LaunchScreen.storyboard */,
 				C792FF6B24E16C7D00F95775 /* Info.plist */,
-				C792FFC224F7B7E300F95775 /* UI */,
 				C792FF9524E2F4D300F95775 /* Model */,
 			);
 			path = WeatherApp;
@@ -200,7 +199,35 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C792FFA924EC1C5800F95775 /* Main */ = {
+		C7FDDAE9250E0F7400211691 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C792FF9324E2F4A600F95775 /* NetworkManager.swift */,
+				C792FFA524E67EF700F95775 /* DataBaseManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C7FDDAEA250E0FAE00211691 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C792FF9824E4150D00F95775 /* AddElementButton.swift */,
+				C792FFB824F6E08C00F95775 /* CellFactory.swift */,
+				C792FF8F24E2B24A00F95775 /* CityOverviewTableViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C7FDDAEB250E0FCF00211691 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C7FDDAED250E0FFB00211691 /* Search */,
+				C7FDDAEC250E0FD900211691 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C7FDDAEC250E0FD900211691 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				C792FF8D24E16D6500F95775 /* CitiesViewController.swift */,
@@ -213,16 +240,7 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		C792FFB324F3DEE400F95775 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				C792FFA924EC1C5800F95775 /* Main */,
-				C792FFB424F3DEF100F95775 /* Search */,
-			);
-			name = Modules;
-			sourceTree = "<group>";
-		};
-		C792FFB424F3DEF100F95775 /* Search */ = {
+		C7FDDAED250E0FFB00211691 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				C792FF9A24E427F000F95775 /* SearchCityViewController.swift */,
@@ -232,27 +250,16 @@
 				C792FFAD24F3DB3100F95775 /* SearchCityInteractor.swift */,
 				C792FFB524F3DF3500F95775 /* SearchCityProtocols.swift */,
 			);
-			name = Search;
+			path = Search;
 			sourceTree = "<group>";
 		};
-		C792FFB724F3E64000F95775 /* Services */ = {
+		C7FDDAEE250E100E00211691 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				C792FF9324E2F4A600F95775 /* NetworkManager.swift */,
-				C792FFA524E67EF700F95775 /* DataBaseManager.swift */,
+				C792FF5D24E16C7A00F95775 /* AppDelegate.swift */,
+				C792FF5F24E16C7A00F95775 /* SceneDelegate.swift */,
 			);
-			name = Services;
-			sourceTree = "<group>";
-		};
-		C792FFC224F7B7E300F95775 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				C792FFB824F6E08C00F95775 /* CellFactory.swift */,
-				C792FF8F24E2B24A00F95775 /* CityOverviewTableViewCell.swift */,
-				C792FF9824E4150D00F95775 /* AddElementButton.swift */,
-			);
-			name = UI;
-			path = Main;
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
