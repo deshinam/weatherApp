@@ -152,34 +152,65 @@
 			isa = PBXGroup;
 			children = (
 				C7FDDAEE250E100E00211691 /* Application */,
-				C7FDDAEB250E0FCF00211691 /* Modules */,
-				C7FDDAEA250E0FAE00211691 /* UI */,
-				C7FDDAE9250E0F7400211691 /* Services */,
-				C792FF6624E16C7D00F95775 /* Assets.xcassets */,
-				C792FF6824E16C7D00F95775 /* LaunchScreen.storyboard */,
-				C792FF6B24E16C7D00F95775 /* Info.plist */,
-				C792FF9524E2F4D300F95775 /* Model */,
+				C7FDDAEB250E0FCF00211691 /* Presentation */,
+				C7FDDAE9250E0F7400211691 /* Data */,
+				C794BE0425BC4725008C61DB /* Resources */,
+				C792FF9524E2F4D300F95775 /* Domain */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
 		};
-		C792FF9524E2F4D300F95775 /* Model */ = {
+		C792FF9524E2F4D300F95775 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				C792FF9624E2F4FF00F95775 /* WeatherData.swift */,
-				C792FF9124E2B28400F95775 /* CityWeather.swift */,
-				C792FF9C24E5A4C200F95775 /* UserCities.swift */,
+				C794BDEB25BC38FB008C61DB /* Entities */,
 			);
-			path = Model;
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		C7FDDAE9250E0F7400211691 /* Services */ = {
+		C794BDDA25BC3877008C61DB /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				C792FF9324E2F4A600F95775 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C794BDDE25BC3896008C61DB /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
 				C792FFA524E67EF700F95775 /* DataBaseManager.swift */,
 			);
-			path = Services;
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		C794BDEB25BC38FB008C61DB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C792FF9124E2B28400F95775 /* CityWeather.swift */,
+				C792FF9624E2F4FF00F95775 /* WeatherData.swift */,
+				C792FF9C24E5A4C200F95775 /* UserCities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C794BE0425BC4725008C61DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C792FF6824E16C7D00F95775 /* LaunchScreen.storyboard */,
+				C792FF6B24E16C7D00F95775 /* Info.plist */,
+				C792FF6624E16C7D00F95775 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C7FDDAE9250E0F7400211691 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C794BDDA25BC3877008C61DB /* Network */,
+				C794BDDE25BC3896008C61DB /* PersistentStorage */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C7FDDAEA250E0FAE00211691 /* UI */ = {
@@ -192,13 +223,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		C7FDDAEB250E0FCF00211691 /* Modules */ = {
+		C7FDDAEB250E0FCF00211691 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C7FDDAEA250E0FAE00211691 /* UI */,
 				C7FDDAED250E0FFB00211691 /* Search */,
 				C7FDDAEC250E0FD900211691 /* Main */,
 			);
-			path = Modules;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		C7FDDAEC250E0FD900211691 /* Main */ = {
@@ -602,7 +634,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.deshinamariia.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = mdeshina.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -621,7 +653,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.deshinamariia.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = mdeshina.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
