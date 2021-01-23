@@ -128,6 +128,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C76CE7BE25BCA734006FFAC4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				C792FFAD24F3DB3100F95775 /* SearchCityInteractor.swift */,
+				C792FFBA24F7B5A600F95775 /* CitiesInteractor.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		C792FF5124E16C7900F95775 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +160,7 @@
 		C792FF5C24E16C7A00F95775 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C792FF6B24E16C7D00F95775 /* Info.plist */,
 				C7FDDAEE250E100E00211691 /* Application */,
 				C7FDDAEB250E0FCF00211691 /* Presentation */,
 				C7FDDAE9250E0F7400211691 /* Data */,
@@ -163,6 +173,7 @@
 		C792FF9524E2F4D300F95775 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				C76CE7BE25BCA734006FFAC4 /* UseCases */,
 				C794BDEB25BC38FB008C61DB /* Entities */,
 			);
 			path = Domain;
@@ -198,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				C792FF6824E16C7D00F95775 /* LaunchScreen.storyboard */,
-				C792FF6B24E16C7D00F95775 /* Info.plist */,
 				C792FF6624E16C7D00F95775 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -238,7 +248,6 @@
 			children = (
 				C792FF8D24E16D6500F95775 /* CitiesViewController.swift */,
 				C792FF9E24E5A54700F95775 /* CitiesPresenter.swift */,
-				C792FFBA24F7B5A600F95775 /* CitiesInteractor.swift */,
 				C792FFBC24F7B5BF00F95775 /* CitiesConfigurator.swift */,
 				C792FFBE24F7B5CA00F95775 /* CitiesRouter.swift */,
 				C792FFC024F7B63F00F95775 /* CitiesProtocols.swift */,
@@ -253,7 +262,6 @@
 				C792FFA324E5B02C00F95775 /* SearchCityPresenter.swift */,
 				C792FFAA24F3DB1000F95775 /* SearchCItyRouter.swift */,
 				C792FFB024F3DB5C00F95775 /* SearchCityConfigurator.swift */,
-				C792FFAD24F3DB3100F95775 /* SearchCityInteractor.swift */,
 				C792FFB524F3DF3500F95775 /* SearchCityProtocols.swift */,
 			);
 			path = Search;
