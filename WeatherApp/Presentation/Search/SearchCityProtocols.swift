@@ -21,7 +21,7 @@ protocol SearchCityPresenterProtocol: class {
 
 protocol SearchCityInteractorProtocol {
     func saveCity(newCity: UserCities)
-    func searchCity(cityName: String)
+    func searchCity(cityName: String, onComplete: @escaping () -> Void?)
     func getCurrentCityName() -> String?
     func addCity() -> Bool
 }

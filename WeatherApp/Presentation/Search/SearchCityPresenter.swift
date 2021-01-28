@@ -17,7 +17,9 @@ final class SearchCityPresenter {
 
 extension SearchCityPresenter: SearchCityPresenterProtocol {
     func searchCityWeather(cityName: String)  {
-        searchCityInteractor.searchCity(cityName: cityName)
+        searchCityInteractor.searchCity(cityName: cityName, onComplete: {
+            self.updateTableView()
+        })
     }
     
     func setInteractor(interactor: SearchCityInteractor) {

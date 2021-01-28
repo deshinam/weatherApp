@@ -28,3 +28,12 @@ struct CityWeather {
         }
     }
 }
+
+extension CityWeather {
+    init (decodedData: City) {
+        conditionId = decodedData.weather[0].id
+        temputure = String(decodedData.main.temp)
+        id = decodedData.id
+        name = decodedData.name
+    }
+}

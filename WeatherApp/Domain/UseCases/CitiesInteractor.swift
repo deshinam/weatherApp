@@ -3,14 +3,8 @@ import Foundation
 final class CitiesIntercator {
     
     // MARK: — Private Properties
-    private var networkManager = NetworkManager()
+    private var citiesDataRepository = CitiesDataRepository()
     private var citiesWeather: [CityWeather]?
-    private weak var presenter: CitiesPresenterProtocol!
-    
-    // MARK: — Initializers
-    init(presenter: CitiesPresenterProtocol) {
-        self.presenter = presenter
-    }
 }
 
 extension CitiesIntercator: CitiesInteractorProtocol {
@@ -18,29 +12,27 @@ extension CitiesIntercator: CitiesInteractorProtocol {
         return self.citiesWeather?.count
     }
     
-    func loadUserCities () {
-        let citiesIdsFromRealm = DataBaseManager.sharedUserCitiesManager.loadCities()
+    func loadUserCities (onComplete: @escaping () -> Void?) {
+        let citiesIdsFromRealm = citiesDataRepository.loadCities()
         var stringWithCities = ""
-        citiesIdsFromRealm?.forEach({
-            stringWithCities += "\($0.cityId),"
-        })
-        print(stringWithCities.count)
+        let stringCitiesArray = citiesIdsFromRealm?.map{String($0.cityId)}
+        stringWithCities = stringCitiesArray?.joined(separator: ",") ?? ""
         if citiesIdsFromRealm != nil {
             DispatchQueue.global(qos: .background).async { [weak self] in
-                self?.networkManager.fetchWeatherById(cityId: stringWithCities, onComplete: { data in self?.citiesWeather = data
+                self?.citiesDataRepository.fetchWeatherById(cityId: stringWithCities, onComplete: { data in self?.citiesWeather = data
                     DispatchQueue.main.async {
-                        self?.presenter.updateTableView()
+                        onComplete()
                     }
                 })
             }
         }
     }
     
-    func deleteCity (index: Int) {
+    func deleteCity (index: Int, onComplete: @escaping () -> Void? ) {
         let cityId = citiesWeather![index].id
-        if let deletedCity = DataBaseManager.sharedUserCitiesManager.findCityById(cityId: cityId ) {
-            if  DataBaseManager.sharedUserCitiesManager.deleteCity(city: deletedCity) {
-                loadUserCities()
+        if let deletedCity = citiesDataRepository.findCityById(cityId: cityId ) {
+            if  citiesDataRepository.deleteCity(city: deletedCity) {
+                loadUserCities(onComplete: onComplete)
             }
         }
     }

@@ -25,7 +25,6 @@ struct DataBaseManager {
                 realm.add(newCity, update: .modified)
             }
         } catch {
-            print (error)
         }
     }
     
@@ -41,7 +40,6 @@ struct DataBaseManager {
                 result = true
             }
         } catch {
-            print (error)
         }
         return result
     }

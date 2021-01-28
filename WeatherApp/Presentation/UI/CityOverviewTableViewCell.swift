@@ -1,7 +1,6 @@
 import UIKit
-import SwipeCellKit
 
-final class CityOverviewTableViewCell: SwipeTableViewCell {
+final class CityOverviewTableViewCell: UITableViewCell {
     
     // MARK: — Public Properties
     var city : CityWeather? {
@@ -17,7 +16,6 @@ final class CityOverviewTableViewCell: SwipeTableViewCell {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
-        lbl.text = "111"
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints = false
     return lbl
@@ -27,7 +25,6 @@ final class CityOverviewTableViewCell: SwipeTableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
-        label.text = "25"
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -49,7 +46,6 @@ final class CityOverviewTableViewCell: SwipeTableViewCell {
         addSubview(cityWeatherImage)
         
         // city label constraints
-        print(contentView.frame.width)
         let cityLeftConstraint = NSLayoutConstraint(item: cityNameLabel, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 25)
         let cityCenterYConstraint = NSLayoutConstraint(item: cityNameLabel, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0)
         let cityWidthConstraint = NSLayoutConstraint(item: cityNameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.6, constant: 0)

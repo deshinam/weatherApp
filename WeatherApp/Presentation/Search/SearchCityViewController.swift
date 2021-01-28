@@ -3,46 +3,66 @@ import UIKit
 final class SearchCityViewController: UIViewController {
     
     // MARK: — Private Properties
-    private var searchCityPresenter: SearchCityPresenterProtocol!
+    private var searchCityPresenter: SearchCityPresenterProtocol?
     private var gradientLayer = CAGradientLayer()
 
-    private var searchHeader : UIView = {
+    private struct Constants {
+        static let searchFieldBackgroundColor: UIColor = .darkGray
+        static let headerLabelText = "Enter city"
+        static let headerLabelColor: UIColor = .white
+        static let headerFontSize: CGFloat = 14
+        static let cellIdentifier = "CityCell"
+        static let viewBackgroundColor = UIColor.systemGray5
+        static let searchTextFieldBackgroundColor: UIColor = .gray
+        static let searchFieldPlaceholderText = "Search"
+        static let searchTextFieldTextColor: UIColor = .white
+        static let defaultTextForSearchResult = "City not found"
+        
+        static let backgroundGradientColorTop = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0).cgColor
+        static let backgroundGradientColorBottom = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0).cgColor
+    }
+    
+    lazy private var searchHeader : UIView = {
         let view = UIView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = Constants.searchFieldBackgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private var searchField: UISearchBar = {
+    lazy private var searchField: UISearchBar = {
         let search = UISearchBar()
         search.showsCancelButton = true
-        search.backgroundColor = .darkGray
+        search.backgroundColor = Constants.searchFieldBackgroundColor
         search.translatesAutoresizingMaskIntoConstraints = false
-
+        search.barTintColor = Constants.searchFieldBackgroundColor
+        search.searchTextField.backgroundColor = Constants.searchTextFieldBackgroundColor
+        search.backgroundImage = UIImage()
+        search.placeholder = Constants.searchFieldPlaceholderText
+        search.searchTextField.textColor = Constants.searchTextFieldTextColor
         return search
     }()
     
-    private var headerLabel: UILabel = {
+    lazy private var headerLabel: UILabel = {
        let label = UILabel()
-        label.text = "Enter city"
+        label.text = Constants.headerLabelText
         label.textAlignment = .center
-        label.textColor = .white
-        label.font = UIFont(name: label.font.fontName, size: 14)
+        label.textColor = Constants.headerLabelColor
+        label.font = UIFont(name: label.font.fontName, size: Constants.headerFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var listIfCitiesTableView: UITableView = {
+    lazy private var listIfCitiesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CityCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
         return tableView
     }()
     
     // MARK: — Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemGray5
+        view.backgroundColor = Constants.viewBackgroundColor
         configureUI()
     }
     
@@ -64,15 +84,10 @@ final class SearchCityViewController: UIViewController {
         searchHeader.addSubview(searchField)
         searchHeader.addSubview(headerLabel)
         setupConstraints()
-        changeBackgroundSearchColor()
+        setCancelButton()
     }
     
-    private func changeBackgroundSearchColor() {
-        searchField.backgroundImage = UIImage()
-        searchField.barTintColor = .darkGray
-        searchField.searchTextField.backgroundColor = .gray
-        searchField.placeholder = "Search"
-        searchField.searchTextField.textColor = .white
+    private func setCancelButton() {
         if let cancelButton = searchField.value(forKey: "cancelButton") as? UIButton {
             cancelButton.setTitle("Cancel", for: .normal)
             cancelButton.setTitleColor(.white,  for: .normal)
@@ -109,8 +124,8 @@ final class SearchCityViewController: UIViewController {
     }
     
     private func setGradientBackground() {
-        let colorTop =  UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0).cgColor
+        let colorTop =  Constants.backgroundGradientColorTop
+        let colorBottom = Constants.backgroundGradientColorBottom
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
@@ -122,7 +137,7 @@ final class SearchCityViewController: UIViewController {
         if searchField.searchTextField.text?.count == 0 {
             return ""
         } else {
-            return "City not found"
+            return Constants.defaultTextForSearchResult
         }
     }
 }
@@ -147,8 +162,7 @@ extension SearchCityViewController: SearchCityViewControllerProtocol {
 
 extension SearchCityViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print ("cancel")
-        searchCityPresenter.dismissScreen()
+        searchCityPresenter?.dismissScreen()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -164,13 +178,13 @@ extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchCityPresenter.getCell(indexPath: indexPath)
-        cell.textLabel?.text = searchCityPresenter?.getCurrentCityName() ?? defaultSearchText()
-        return cell
+        let cell = searchCityPresenter?.getCell(indexPath: indexPath)
+        cell?.textLabel?.text = searchCityPresenter?.getCurrentCityName() ?? defaultSearchText()
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchCityPresenter.cellTapped()
+        searchCityPresenter?.cellTapped()
     }
     
 }

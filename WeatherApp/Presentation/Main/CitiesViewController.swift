@@ -1,32 +1,41 @@
 import UIKit
-import SwipeCellKit
 
 final class CitiesViewController: UIViewController {
 
     // MARK: — Private Properties
     private var addCityButton: AddElementButton?
-    private var citiesPresenter: CitiesPresenterProtocol!
+    private var citiesPresenter: CitiesPresenterProtocol?
     
-    private var tableView: UITableView = {
+    private struct Constants {
+        static let deleteIcon = "trash"
+        static let defaultScreenColor: UIColor = .white
+        
+        static let fontLabelSize : CGFloat = 18
+        static let defaultLabelColor: UIColor = .black
+        static let defaultLabelText = "Choose a city to see the weather forecast"
+        static let cellIdentifier = "CityOverviewTableViewCell"
+    }
+    
+    lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CityOverviewTableViewCell.self, forCellReuseIdentifier: "CityOverviewTableViewCell")
+        tableView.register(CityOverviewTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
         tableView.separatorStyle = .none
         return tableView
     }()
     
-    private var defaultScreen : UIView = {
+    lazy private var defaultScreen : UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.defaultScreenColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
       }()
     
-    private var defaultLabel : UILabel = {
+    lazy private var defaultLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
-        lbl.font = UIFont.boldSystemFont(ofSize: 18)
-        lbl.text = "Choose a city to see the weather forecast"
+        lbl.textColor = Constants.defaultLabelColor
+        lbl.font = UIFont.boldSystemFont(ofSize: Constants.fontLabelSize)
+        lbl.text = Constants.defaultLabelText
         lbl.textAlignment = .center
         lbl.translatesAutoresizingMaskIntoConstraints = false
     return lbl
@@ -47,6 +56,7 @@ final class CitiesViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+      
         let tableViewTopConstraint = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 70)
         let tableViewBottomConstraint = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -80)
         let tableViewLeftConstraint = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
@@ -139,23 +149,28 @@ extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = citiesPresenter.getCell(indexPath: indexPath)
-        cell.delegate = self
-        return cell
+        let cell = citiesPresenter?.getCell(indexPath: indexPath)
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let rightAction = UIContextualAction(style: .normal, title:  "Delete", handler: { [weak self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self?.citiesPresenter?.deleteCity(index: indexPath.row)
+            success(true)
+        })
+        
+        rightAction.image = UIImage(systemName: Constants.deleteIcon)
+        rightAction.backgroundColor = UIColor.red
+        
+        return UISwipeActionsConfiguration(actions: [rightAction])
     }
 }
 
-// MARK: — Swipe Cell Delegate
-extension CitiesViewController: SwipeTableViewCellDelegate {
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in
-            self?.citiesPresenter?.deleteCity(index: indexPath.row)
-        }
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "trash")
-        return [deleteAction]
-    }
-}
+
+
 
 

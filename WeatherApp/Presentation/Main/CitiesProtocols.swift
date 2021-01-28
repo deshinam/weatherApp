@@ -19,9 +19,10 @@ protocol CitiesPresenterProtocol: class {
 
 protocol CitiesInteractorProtocol {
     func cityWeatherCount() -> Int?
-    func deleteCity (index: Int)
-    func loadUserCities ()
+    func deleteCity (index: Int, onComplete: @escaping () -> Void?)
+    func loadUserCities (onComplete: @escaping () -> Void?)
     func getCityWeather(id: Int) -> CityWeather?
+    
 }
 
 protocol CitiesRouterProtocol {

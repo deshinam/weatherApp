@@ -3,34 +3,26 @@ import Foundation
 final class SearchCityInteractor {
     
     // MARK: — Private Properties
-    private weak var presenter: SearchCityPresenterProtocol!
-    private var networkManager: NetworkManager = NetworkManager()
-    private var dataBaseManager: DataBaseManager = DataBaseManager.sharedUserCitiesManager
+    private var citiesDataRepository: CitiesDataRepository = CitiesDataRepository()
     private var currentCity: CityWeather?
-    
-    // MARK: — Initializers
-    init(presenter: SearchCityPresenterProtocol) {
-        self.presenter = presenter
-    }
 }
 
 extension SearchCityInteractor: SearchCityInteractorProtocol {
     func saveCity(newCity: UserCities) {
-        dataBaseManager.saveCity(newCity: newCity)
+        citiesDataRepository.saveCity(newCity: newCity)
     }
     
-    func searchCity(cityName: String) {
-        networkManager.fetchWeather(cityName: cityName, onComplete: { [weak self]  data in
-             DispatchQueue.main.async {
-                 self?.currentCity = data?[0]
-                self?.presenter.updateTableView()
-
-             }
-         })
+    func searchCity(cityName: String, onComplete: @escaping () -> Void?) {
+        citiesDataRepository.fetchWeather(cityName: cityName, onComplete: { [weak self]  data in
+            DispatchQueue.main.async {
+                self?.currentCity = data?[0]
+                onComplete()
+            }
+        })
     }
     
     func getCurrentCityName () -> String? {
-           return currentCity?.name
+        return currentCity?.name
     }
     
     func addCity() -> Bool {
@@ -38,7 +30,7 @@ extension SearchCityInteractor: SearchCityInteractorProtocol {
             return false
         }
         let newCity = UserCities(cityId: currentCity!.id, cityName: currentCity!.name)
-        dataBaseManager.saveCity(newCity: newCity)
-            return true
+        citiesDataRepository.saveCity(newCity: newCity)
+        return true
     }
 }
