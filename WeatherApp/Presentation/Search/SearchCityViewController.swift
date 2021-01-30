@@ -16,7 +16,7 @@ final class SearchCityViewController: UIViewController {
         static let searchTextFieldBackgroundColor: UIColor = .gray
         static let searchFieldPlaceholderText = "Search"
         static let searchTextFieldTextColor: UIColor = .white
-        static let defaultTextForSearchResult = "City not found"
+        static let defaultTextForSearchResult = "City is not found"
         
         static let backgroundGradientColorTop = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0).cgColor
         static let backgroundGradientColorBottom = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0).cgColor

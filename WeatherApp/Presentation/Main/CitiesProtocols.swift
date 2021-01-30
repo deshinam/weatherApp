@@ -21,7 +21,7 @@ protocol CitiesPresenterProtocol: class {
 protocol CitiesInteractorProtocol {
     func cityWeatherCount() -> Int?
     func deleteCity (index: Int) -> Promise<Void>
-    func setCityWeather () -> Promise<Void>
+    func setUserCities () -> Promise<Void>
     func getCityWeather(id: Int) -> CityWeather?
     
 }

@@ -18,17 +18,15 @@ final class CitiesPresenter {
 extension CitiesPresenter: CitiesPresenterProtocol {
     // MARK: — Public Methods
     func loadUserCities () {
-        citiesInteractor.setCityWeather()
-            .done {
-                self.updateTableView()
-            }
+        citiesInteractor.setUserCities().done {
+            self.updateTableView()
+        }
     }
     
     func deleteCity (index: Int) {
-        citiesInteractor.deleteCity(index: index)
-            .done {
-                self.updateTableView()
-            }
+        citiesInteractor.deleteCity(index: index).done {
+            self.updateTableView()
+        }
     }
     
     
