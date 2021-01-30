@@ -8,25 +8,18 @@ struct NetworkManager {
     
     // MARK: — Initializers
     private init()  {}
-    
+
     // MARK: — Public Methods
-    func performRequest<R: RequestProtocol> (with request: R, performRequestOnComplete: @escaping ([CityWeather]?) -> Void) {
-        if let url = URL(string: request.url) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) {  (data, response, error) in
-                if error != nil {
-                    performRequestOnComplete(nil)
-                }
-                if let safeData = data {
-                    guard let decodedData: R.T = self.parseJSON(safeData) else {
-                        performRequestOnComplete(nil)
-                        return
-                    }
-                    let cityWeathers = request.transformDataToCityWeatherArray(decodedData: decodedData)
-                    performRequestOnComplete(cityWeathers)
-                }
-            }
-            task.resume()
+    func performRequest<R: RequestProtocol> (with request: R) -> Promise<[CityWeather]?> {
+        let url = URL(string: request.url)!
+        return firstly {
+             URLSession.shared.dataTask(.promise, with: url)
+        }.compactMap {
+            let decodedData = try JSONDecoder().decode(R.T.self, from: $0.data)
+            let cityWeathers = request.transformDataToCityWeatherArray(decodedData: decodedData)
+            return cityWeathers
+        }.map {cityWeathers in
+            return cityWeathers
         }
     }
     
@@ -39,7 +32,5 @@ struct NetworkManager {
             return nil
         }
     }
+
 }
-
-
-

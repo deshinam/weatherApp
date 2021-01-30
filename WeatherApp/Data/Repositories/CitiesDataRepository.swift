@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import PromiseKit
 
 class CitiesDataRepository {
     // MARK: — Private Properties
@@ -7,14 +8,14 @@ class CitiesDataRepository {
     private var dataBaseManager: DataBaseManager = DataBaseManager.sharedUserCitiesManager
     
     // MARK: — Public Methods
-    func fetchWeather(cityName: String, onComplete: @escaping ([CityWeather]?) -> Void ) {
+    func fetchWeather(cityName: String ) -> Promise<[CityWeather]?> {
         let request = CityByNameRequest(cityName: cityName)
-        networkManager.performRequest(with: request, performRequestOnComplete: onComplete)
+        return networkManager.performRequest(with: request)
     }
     
-    func fetchWeatherById(cityId: String, onComplete: @escaping ([CityWeather]?) -> Void) {
+    func fetchWeatherById(cityId: String) -> Promise<[CityWeather]?>{
         let request = CityByIdRequest(cityIds: cityId)
-        networkManager.performRequest(with: request, performRequestOnComplete: onComplete)
+        return networkManager.performRequest(with: request)
     }
     
     func loadCities () -> Results <UserCities>?  {

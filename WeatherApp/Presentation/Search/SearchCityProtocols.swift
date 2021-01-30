@@ -1,4 +1,5 @@
 import UIKit
+import PromiseKit
 
 protocol SearchCityViewControllerProtocol: class {
     func updateTableView()
@@ -21,7 +22,7 @@ protocol SearchCityPresenterProtocol: class {
 
 protocol SearchCityInteractorProtocol {
     func saveCity(newCity: UserCities)
-    func searchCity(cityName: String, onComplete: @escaping () -> Void?)
+    func searchCity(cityName: String) -> Promise<Void>
     func getCurrentCityName() -> String?
     func addCity() -> Bool
 }

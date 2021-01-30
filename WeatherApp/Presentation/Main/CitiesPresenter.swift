@@ -1,4 +1,5 @@
 import Foundation
+import PromiseKit
 
 final class CitiesPresenter {
     
@@ -17,15 +18,17 @@ final class CitiesPresenter {
 extension CitiesPresenter: CitiesPresenterProtocol {
     // MARK: — Public Methods
     func loadUserCities () {
-        citiesInteractor.loadUserCities(onComplete: {
-            self.updateTableView()
-        })
+        citiesInteractor.setCityWeather()
+            .done {
+                self.updateTableView()
+            }
     }
     
     func deleteCity (index: Int) {
-        citiesInteractor.deleteCity(index: index, onComplete: {
-            self.updateTableView()
-        })
+        citiesInteractor.deleteCity(index: index)
+            .done {
+                self.updateTableView()
+            }
     }
     
     

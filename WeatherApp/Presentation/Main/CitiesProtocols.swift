@@ -1,4 +1,5 @@
 import UIKit
+import PromiseKit
 
 protocol CitiesViewControllerProtocol: class {
     func updateCitiesWeather()
@@ -19,8 +20,8 @@ protocol CitiesPresenterProtocol: class {
 
 protocol CitiesInteractorProtocol {
     func cityWeatherCount() -> Int?
-    func deleteCity (index: Int, onComplete: @escaping () -> Void?)
-    func loadUserCities (onComplete: @escaping () -> Void?)
+    func deleteCity (index: Int) -> Promise<Void>
+    func setCityWeather () -> Promise<Void>
     func getCityWeather(id: Int) -> CityWeather?
     
 }

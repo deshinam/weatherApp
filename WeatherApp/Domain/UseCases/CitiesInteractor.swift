@@ -1,4 +1,5 @@
 import Foundation
+import PromiseKit
 
 final class CitiesIntercator {
     
@@ -8,32 +9,37 @@ final class CitiesIntercator {
 }
 
 extension CitiesIntercator: CitiesInteractorProtocol {
-    func cityWeatherCount() -> Int? {
-        return self.citiesWeather?.count
-    }
     
-    func loadUserCities (onComplete: @escaping () -> Void?) {
+    private func loadUserCities() -> Promise<[CityWeather]?> {
         let citiesIdsFromRealm = citiesDataRepository.loadCities()
         var stringWithCities = ""
         let stringCitiesArray = citiesIdsFromRealm?.map{String($0.cityId)}
         stringWithCities = stringCitiesArray?.joined(separator: ",") ?? ""
-        if citiesIdsFromRealm != nil {
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                self?.citiesDataRepository.fetchWeatherById(cityId: stringWithCities, onComplete: { data in self?.citiesWeather = data
-                    DispatchQueue.main.async {
-                        onComplete()
-                    }
-                })
-            }
-        }
+        return self.citiesDataRepository.fetchWeatherById(cityId: stringWithCities)
     }
     
-    func deleteCity (index: Int, onComplete: @escaping () -> Void? ) {
+    private func deleteActions(index: Int) -> Promise<Void>  {
         let cityId = citiesWeather![index].id
         if let deletedCity = citiesDataRepository.findCityById(cityId: cityId ) {
             if  citiesDataRepository.deleteCity(city: deletedCity) {
-                loadUserCities(onComplete: onComplete)
+                return setCityWeather()
             }
+        }
+        return Promise<Void>()
+    }
+    
+    func cityWeatherCount() -> Int? {
+        return self.citiesWeather?.count
+    }
+    
+    func setCityWeather () -> Promise<Void> {
+        loadUserCities().done { data -> Void in
+            self.citiesWeather = data
+        }
+    }
+    
+    func deleteCity (index: Int)-> Promise<Void> {
+        deleteActions(index: index).done {
         }
     }
     
@@ -41,4 +47,3 @@ extension CitiesIntercator: CitiesInteractorProtocol {
         return citiesWeather?[id]
     }
 }
-

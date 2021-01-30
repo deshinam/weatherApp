@@ -1,4 +1,5 @@
 import Foundation
+import PromiseKit
 
 final class SearchCityInteractor {
     
@@ -12,13 +13,10 @@ extension SearchCityInteractor: SearchCityInteractorProtocol {
         citiesDataRepository.saveCity(newCity: newCity)
     }
     
-    func searchCity(cityName: String, onComplete: @escaping () -> Void?) {
-        citiesDataRepository.fetchWeather(cityName: cityName, onComplete: { [weak self]  data in
-            DispatchQueue.main.async {
-                self?.currentCity = data?[0]
-                onComplete()
-            }
-        })
+    func searchCity(cityName: String) -> Promise<Void> {
+        citiesDataRepository.fetchWeather(cityName: cityName).done { data in
+            self.currentCity = data?[0]
+        }
     }
     
     func getCurrentCityName () -> String? {

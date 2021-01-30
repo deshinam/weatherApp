@@ -1,7 +1,8 @@
 import UIKit
+import PromiseKit
 
 final class SearchCityPresenter {
-
+    
     // MARK: — Private Properties
     private weak var searchCityViewControllerProtocol: SearchCityViewControllerProtocol?
     private var searchCityInteractor: SearchCityInteractorProtocol!
@@ -11,15 +12,16 @@ final class SearchCityPresenter {
     // MARK: — Initializers
     init (searchCityViewControllerProtocol: SearchCityViewControllerProtocol) {
         self.searchCityViewControllerProtocol = searchCityViewControllerProtocol
-               cellFactory = CellFactory(tableView: searchCityViewControllerProtocol.getTableView() )
+        cellFactory = CellFactory(tableView: searchCityViewControllerProtocol.getTableView() )
     }
 }
 
 extension SearchCityPresenter: SearchCityPresenterProtocol {
     func searchCityWeather(cityName: String)  {
-        searchCityInteractor.searchCity(cityName: cityName, onComplete: {
-            self.updateTableView()
-        })
+        searchCityInteractor.searchCity(cityName: cityName)
+            .done {_ in
+                self.updateTableView()
+            }
     }
     
     func setInteractor(interactor: SearchCityInteractor) {
@@ -34,7 +36,7 @@ extension SearchCityPresenter: SearchCityPresenterProtocol {
         if searchCityInteractor?.addCity() ?? true {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateCities"), object: nil)
             dismissScreen()
-            }
+        }
     }
     
     func getCurrentCityName () -> String? {
