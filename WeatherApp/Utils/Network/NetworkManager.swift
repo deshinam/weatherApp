@@ -16,10 +16,11 @@ struct NetworkManager {
                 URLSession.shared.dataTask(.promise, with: url)
             }.compactMap {
                 var cityWeathers: [CityWeather]?
+                do {
                 let decodedData = try JSONDecoder().decode(R.T.self, from: $0.data)
                 cityWeathers = request.transformDataToCityWeatherArray(decodedData: decodedData)
-                return cityWeathers
-            }.map {cityWeathers in
+                } catch {
+                }
                 return cityWeathers
             }
         } else {
