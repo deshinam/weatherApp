@@ -1246,34 +1246,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8401599B-80D0-47AF-A849-58F0F92CF256 - 342fb169a8348b77"
+                  uuid = "8401599B-80D0-47AF-A849-58F0F92CF256 - d83e6f819cb5f5bf"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WeatherApp.CitiesIntercator.setCityWeather() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  symbolName = "WeatherApp.CitiesIntercator.setUserCities() -&gt; PromiseKit.Promise&lt;()&gt;"
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Domain/UseCases/CitiesInteractor.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "79">
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "67">
                </Location>
                <Location
-                  uuid = "8401599B-80D0-47AF-A849-58F0F92CF256 - 2c4edf1211c87096"
+                  uuid = "8401599B-80D0-47AF-A849-58F0F92CF256 - e1e3d59cac2f6cd7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt; in WeatherApp.CitiesIntercator.setCityWeather() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;) -&gt; () in WeatherApp.CitiesIntercator.setUserCities() -&gt; PromiseKit.Promise&lt;()&gt;"
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Domain/UseCases/CitiesInteractor.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1361,22 +1361,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6CF7EA3D-5243-4444-A69A-710A90372ACB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "performRequest(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FAFC4F4C-D4CD-4229-8238-7FE7D938FBFB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1393,17 +1377,368 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D89ECAB-3965-4F7A-9DC8-8A4C36419478"
+            uuid = "A3D712E9-317E-4631-99CA-60A7C1F31442"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "searchCity(cityName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DC61A78-2624-4717-93A8-BE5D9C5B458D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "searchCity(cityName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2118AECD-FA3A-4038-BB82-DEC8130E7BC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "searchCity(cityName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D20BB20-B94C-41C4-AB26-A5DED27F67AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "searchCity(cityName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B293717-91F3-458B-87BF-E53CADCEF69F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "performRequest(with:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE4CA968-327F-46DA-BDF4-C83F6D38BDE4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AE4CA968-327F-46DA-BDF4-C83F6D38BDE4 - daa25ea102cb638f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "560">
+               </Location>
+               <Location
+                  uuid = "AE4CA968-327F-46DA-BDF4-C83F6D38BDE4 - e47bb233615bd428"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; PromiseKit.Promise&lt;(data: Foundation.Data, response: __C.NSURLResponse)&gt; in WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F0511A8-4FA1-4B20-BAE8-74DEE798CB07"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A29C25E3-8BF7-43CB-A83D-C0A2CCF4AE47"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A29C25E3-8BF7-43CB-A83D-C0A2CCF4AE47 - daa25ea102cb6351"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "916">
+               </Location>
+               <Location
+                  uuid = "A29C25E3-8BF7-43CB-A83D-C0A2CCF4AE47 - e47bb233615bd4d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; PromiseKit.Promise&lt;(data: Foundation.Data, response: __C.NSURLResponse)&gt; in WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "174">
+               </Location>
+               <Location
+                  uuid = "A29C25E3-8BF7-43CB-A83D-C0A2CCF4AE47 - 94e8bab13861fd7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 ((data: Foundation.Data, response: __C.NSURLResponse)) throws -&gt; Swift.Optional&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt; in WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "198">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF67F743-5C42-4F75-8ABF-233F95079FD5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70940E12-2ECB-4AC2-83F7-3F9DDD2ACF96"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "70940E12-2ECB-4AC2-83F7-3F9DDD2ACF96 - daa25ea102cb62f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1217">
+               </Location>
+               <Location
+                  uuid = "70940E12-2ECB-4AC2-83F7-3F9DDD2ACF96 - a1eb2d7bd545cf7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;) -&gt; Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt; in WeatherApp.NetworkManager.performRequest&lt;A where A: WeatherApp.RequestProtocol&gt;(with: A) -&gt; PromiseKit.Promise&lt;Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Utils/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AB277E7-6BF5-49C1-8EAD-E92E2233AC48"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94C8DC82-5078-486F-879E-4AC0576F3F34"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Utils/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "performRequest(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AE3C118-BFF2-4CF8-9E49-2562D63BA7BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Data/Repositories/CitiesDataRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "fetchWeatherByName(cityName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17DC716F-49B9-4D51-B2BA-14A50E2095FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "searchCity(cityName:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "17DC716F-49B9-4D51-B2BA-14A50E2095FD - a2b75bc92be69589"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.SearchCityInteractor.searchCity(cityName: Swift.String) -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "17DC716F-49B9-4D51-B2BA-14A50E2095FD - efbd4859955844ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;WeatherApp.CityWeather&gt;&gt;) -&gt; () in WeatherApp.SearchCityInteractor.searchCity(cityName: Swift.String) -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/masha/Desktop/Apps/WeatherApp/WeatherApp/Domain/UseCases/SearchCityInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "91">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
