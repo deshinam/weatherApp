@@ -29,7 +29,7 @@ struct DataBaseManager {
     }
     
     func findCityById (cityId: Int) -> UserCities? {
-        return DataBaseManager.sharedUserCitiesManager.currentUserCities?.filter({ $0.cityId == cityId}).first
+        return currentUserCities?.filter({ $0.cityId == cityId}).first
     }
     
     mutating func deleteCity (city: UserCities) -> Bool {

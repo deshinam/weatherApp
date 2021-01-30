@@ -25,10 +25,10 @@ public struct Request {
         }
     }
     let city: String
-    
-    func performRequest() {
-        
-    }
+//    
+//    func performRequest() {
+//        
+//    }
 }
 
 struct NetworkManager {
