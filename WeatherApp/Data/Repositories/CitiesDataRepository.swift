@@ -8,11 +8,13 @@ class CitiesDataRepository {
     
     // MARK: — Public Methods
     func fetchWeather(cityName: String, onComplete: @escaping ([CityWeather]?) -> Void ) {
-        networkManager.fetchWeather(cityName: cityName, onComplete: onComplete)
+        let request = CityByNameRequest(cityName: cityName)
+        networkManager.performRequest(with: request, performRequestOnComplete: onComplete)
     }
     
     func fetchWeatherById(cityId: String, onComplete: @escaping ([CityWeather]?) -> Void) {
-        networkManager.fetchWeatherById(cityId: cityId, onComplete: onComplete)
+        let request = CityByIdRequest(cityIds: cityId)
+        networkManager.performRequest(with: request, performRequestOnComplete: onComplete)
     }
     
     func loadCities () -> Results <UserCities>?  {
