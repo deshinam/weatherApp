@@ -9,7 +9,6 @@ protocol SearchCityViewControllerProtocol: class {
 }
 
 protocol SearchCityPresenterProtocol: class {
-    
     func searchCityWeather(cityName: String)
     func cellTapped ()
     func getCurrentCityName() -> String?
@@ -17,7 +16,7 @@ protocol SearchCityPresenterProtocol: class {
     func updateTableView()
     func setRouter(router: SearchCityRouter)
     func dismissScreen()
-    func getCell(indexPath: IndexPath)-> UITableViewCell
+    func getCell(indexPath: IndexPath) -> UITableViewCell
 }
 
 protocol SearchCityInteractorProtocol {

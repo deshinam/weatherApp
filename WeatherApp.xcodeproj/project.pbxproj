@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50DF6004699596699CF20CE6 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD8D99D8F07A37744549C67 /* Pods_WeatherApp.framework */; };
+		C7256F1225CEF38B006BF40C /* PublicConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7256F1125CEF38B006BF40C /* PublicConstants.swift */; };
+		C74480D025C9EF80000222F7 /* PreferenseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74480CF25C9EF80000222F7 /* PreferenseStorage.swift */; };
 		C76AAB3E25C5B556006D6D9A /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76AAB3D25C5B556006D6D9A /* APIRequests.swift */; };
 		C78CEE0025C3078000E83AAB /* CitiesDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78CEDFF25C3078000E83AAB /* CitiesDataRepository.swift */; };
 		C792FF5E24E16C7A00F95775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FF5D24E16C7A00F95775 /* AppDelegate.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		42AB594AFD88284B9E4C46F4 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		8BD8D99D8F07A37744549C67 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7256F1125CEF38B006BF40C /* PublicConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicConstants.swift; sourceTree = "<group>"; };
+		C74480CF25C9EF80000222F7 /* PreferenseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenseStorage.swift; sourceTree = "<group>"; };
 		C76AAB3D25C5B556006D6D9A /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 		C78CEDFF25C3078000E83AAB /* CitiesDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesDataRepository.swift; sourceTree = "<group>"; };
 		C792FF5A24E16C7900F95775 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +190,7 @@
 			children = (
 				C76CE7BE25BCA734006FFAC4 /* UseCases */,
 				C794BDEB25BC38FB008C61DB /* Entities */,
+				C7256F1125CEF38B006BF40C /* PublicConstants.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				C792FFA524E67EF700F95775 /* DataBaseManager.swift */,
+				C74480CF25C9EF80000222F7 /* PreferenseStorage.swift */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				C792FF5724E16C7900F95775 /* Frameworks */,
 				C792FF5824E16C7900F95775 /* Resources */,
 				BF28EE18736B194FF3B0FC4F /* [CP] Embed Pods Frameworks */,
+				C74480DC25C9F2D3000222F7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -368,7 +375,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Машенька";
 				TargetAttributes = {
 					C792FF5924E16C7900F95775 = {
@@ -470,6 +477,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C74480DC25C9F2D3000222F7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -481,6 +505,7 @@
 				C792FF9024E2B24A00F95775 /* CityOverviewTableViewCell.swift in Sources */,
 				C792FFB624F3DF3500F95775 /* SearchCityProtocols.swift in Sources */,
 				C792FF9B24E427F000F95775 /* SearchCityViewController.swift in Sources */,
+				C7256F1225CEF38B006BF40C /* PublicConstants.swift in Sources */,
 				C792FFA624E67EF700F95775 /* DataBaseManager.swift in Sources */,
 				C792FF9D24E5A4C200F95775 /* UserCities.swift in Sources */,
 				C76AAB3E25C5B556006D6D9A /* APIRequests.swift in Sources */,
@@ -491,6 +516,7 @@
 				C78CEE0025C3078000E83AAB /* CitiesDataRepository.swift in Sources */,
 				C792FFBF24F7B5CA00F95775 /* CitiesRouter.swift in Sources */,
 				C792FFB124F3DB5C00F95775 /* SearchCityConfigurator.swift in Sources */,
+				C74480D025C9EF80000222F7 /* PreferenseStorage.swift in Sources */,
 				C792FFC124F7B63F00F95775 /* CitiesProtocols.swift in Sources */,
 				C792FFBD24F7B5BF00F95775 /* CitiesConfigurator.swift in Sources */,
 				C792FFBB24F7B5A600F95775 /* CitiesInteractor.swift in Sources */,
@@ -570,6 +596,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -598,6 +625,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -630,6 +658,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -651,6 +680,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

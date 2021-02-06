@@ -1,12 +1,12 @@
 import Foundation
 
 struct CityWeather {
-    
-    var id: Int
+
+    var cityWeatherId: Int
     var name: String
     var temputure: String
     var conditionId: Int = 200
-    
+
     var conditionName: String {
         switch conditionId {
         case 200...232:
@@ -33,7 +33,7 @@ extension CityWeather {
     init (decodedData: City) {
         conditionId = decodedData.weather[0].id
         temputure = String(decodedData.main.temp)
-        id = decodedData.id
+        cityWeatherId = decodedData.id
         name = decodedData.name
     }
 }

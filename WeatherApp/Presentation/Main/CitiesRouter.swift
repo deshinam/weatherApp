@@ -1,10 +1,10 @@
 import UIKit
 
 final class CitiesRouter: CitiesRouterProtocol {
-    
+
     // MARK: — Private Properties
     private weak var searchCityVC: SearchCityViewController!
-    
+
     // MARK: — Public Methods
     func openSearchModule(citiesViewController: CitiesViewController) {
         let searchCityVC = SearchCityViewController()
@@ -14,4 +14,3 @@ final class CitiesRouter: CitiesRouterProtocol {
         citiesViewController.present(searchCityVC, animated: true, completion: nil)
     }
 }
-

@@ -13,22 +13,26 @@ PODS:
   - Realm/Headers (5.3.2)
   - RealmSwift (5.3.2):
     - Realm (= 5.3.2)
+  - SwiftLint (0.40.2)
 
 DEPENDENCIES:
   - PromiseKit (~> 6.8)
   - RealmSwift
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - PromiseKit
     - Realm
     - RealmSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Realm: c6794276ca8884808ba168a22f9d71362b170b85
   RealmSwift: 42ec6cec3170aeeda407f797f07268a7d055ebc7
+  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: 559f12975727967a240a958377e01a21570fc83b
+PODFILE CHECKSUM: a9e3e4a81ae621758526868154bb33914645c640
 
 COCOAPODS: 1.9.3

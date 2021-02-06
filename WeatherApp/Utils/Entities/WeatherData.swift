@@ -2,7 +2,6 @@ import Foundation
 
 struct WeatherData: Codable {
     let list: [City]
-    
 }
 
 struct City: Codable {

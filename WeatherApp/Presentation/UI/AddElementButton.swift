@@ -9,9 +9,9 @@ final class AddElementButton: UIButton {
         static let buttonBorderWidth: CGFloat = 1
         static let buttonHighlightedColor: UIColor = .lightGray
     }
-    
+
     // MARK: — Private Properties
-    private var image : UIImageView = {
+    private var image: UIImageView = {
         let view = UIImageView()
         view.image = Constants.buttonImage
         view.contentMode = .scaleAspectFit
@@ -28,14 +28,13 @@ final class AddElementButton: UIButton {
             set {
                 if newValue {
                     backgroundColor = Constants.buttonHighlightedColor
-                }
-                else {
+                } else {
                     backgroundColor = .none
                 }
                 super.isHighlighted = newValue
             }
         }
-    
+
     // MARK: — Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,11 +47,11 @@ final class AddElementButton: UIButton {
         self.addSubview(image)
         setConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: — Private Methods
     private func setConstraints() {
         let imageLeftConstraint = NSLayoutConstraint(item: image, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 10)
