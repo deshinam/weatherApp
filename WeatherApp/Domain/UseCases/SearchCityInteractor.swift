@@ -15,7 +15,7 @@ extension SearchCityInteractor: SearchCityInteractorProtocol {
 
     func searchCity(cityName: String) -> Promise<Void> {
         citiesDataRepository.fetchWeatherByName(cityName: cityName).done { data in
-            self.currentCity = data?[0]
+            self.currentCity = data
         }
     }
 

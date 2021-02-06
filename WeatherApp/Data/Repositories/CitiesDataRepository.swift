@@ -8,14 +8,12 @@ class CitiesDataRepository {
     private var dataBaseManager: DataBaseManager = DataBaseManager.sharedUserCitiesManager
 
     // MARK: — Public Methods
-    func fetchWeatherByName(cityName: String ) -> Promise<[CityWeather]?> {
-        let request = CityByNameRequest(cityName: cityName)
-        return networkManager.performRequest(with: request)
+    func fetchWeatherByName(cityName: String ) -> Promise<CityWeather?> {
+        return networkManager.performRequestObject(cityName: cityName)
     }
 
     func fetchWeatherById(cityId: String) -> Promise<[CityWeather]?> {
-        let request = CityByIdRequest(cityIds: cityId)
-        return networkManager.performRequest(with: request)
+        return networkManager.performRequestArray(cityIds: cityId)
     }
 
     func loadCities () -> Results <UserCities>? {
