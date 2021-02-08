@@ -25,7 +25,7 @@
 		C792FF9F24E5A54700F95775 /* CitiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FF9E24E5A54700F95775 /* CitiesPresenter.swift */; };
 		C792FFA424E5B02C00F95775 /* SearchCityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFA324E5B02C00F95775 /* SearchCityPresenter.swift */; };
 		C792FFA624E67EF700F95775 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFA524E67EF700F95775 /* DataBaseManager.swift */; };
-		C792FFAB24F3DB1000F95775 /* SearchCItyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFAA24F3DB1000F95775 /* SearchCItyRouter.swift */; };
+		C792FFAB24F3DB1000F95775 /* SearchCityRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFAA24F3DB1000F95775 /* SearchCityRouter.swift */; };
 		C792FFAE24F3DB3100F95775 /* SearchCityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFAD24F3DB3100F95775 /* SearchCityInteractor.swift */; };
 		C792FFB124F3DB5C00F95775 /* SearchCityConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFB024F3DB5C00F95775 /* SearchCityConfigurator.swift */; };
 		C792FFB624F3DF3500F95775 /* SearchCityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792FFB524F3DF3500F95775 /* SearchCityProtocols.swift */; };
@@ -77,7 +77,7 @@
 		C792FF9E24E5A54700F95775 /* CitiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesPresenter.swift; sourceTree = "<group>"; };
 		C792FFA324E5B02C00F95775 /* SearchCityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityPresenter.swift; sourceTree = "<group>"; };
 		C792FFA524E67EF700F95775 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
-		C792FFAA24F3DB1000F95775 /* SearchCItyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCItyRouter.swift; sourceTree = "<group>"; };
+		C792FFAA24F3DB1000F95775 /* SearchCityRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityRouter.swift; sourceTree = "<group>"; };
 		C792FFAD24F3DB3100F95775 /* SearchCityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityInteractor.swift; sourceTree = "<group>"; };
 		C792FFB024F3DB5C00F95775 /* SearchCityConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityConfigurator.swift; sourceTree = "<group>"; };
 		C792FFB524F3DF3500F95775 /* SearchCityProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityProtocols.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 			children = (
 				C792FF9A24E427F000F95775 /* SearchCityViewController.swift */,
 				C792FFA324E5B02C00F95775 /* SearchCityPresenter.swift */,
-				C792FFAA24F3DB1000F95775 /* SearchCItyRouter.swift */,
+				C792FFAA24F3DB1000F95775 /* SearchCityRouter.swift */,
 				C792FFB024F3DB5C00F95775 /* SearchCityConfigurator.swift */,
 				C792FFB524F3DF3500F95775 /* SearchCityProtocols.swift */,
 			);
@@ -489,7 +489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect\n\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -521,7 +521,7 @@
 				C792FF9724E2F4FF00F95775 /* WeatherData.swift in Sources */,
 				C792FFB924F6E08C00F95775 /* CellFactory.swift in Sources */,
 				C792FF9924E4150D00F95775 /* AddElementButton.swift in Sources */,
-				C792FFAB24F3DB1000F95775 /* SearchCItyRouter.swift in Sources */,
+				C792FFAB24F3DB1000F95775 /* SearchCityRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,15 @@ import Foundation
 import CoreLocation
 import PromiseKit
 
+protocol RequestObject: Codable {
+    init(decodedData: Any)
+}
+
+protocol DecodableList: Decodable {
+    associatedtype T: Decodable
+    var list: [T] {get set}
+}
+
 struct NetworkManager {
 
     private struct Constants {
@@ -18,15 +27,15 @@ struct NetworkManager {
     private init() { }
 
     // MARK: — Public Methods
-    func performRequestObject(cityName: String) -> Promise<CityWeather?> {
+    func performRequestObject<T: RequestObject, K: Decodable>(cityName: String, objectType: T.Type, decodableObjectType: K.Type) -> Promise<T?> {
         if let url = URL(string: "\(Constants.weatherAPIObject)\(cityName)") {
             return firstly {
                 URLSession.shared.dataTask(.promise, with: url)
             }.compactMap {
-                var weather: CityWeather?
+                var weather: T?
                 do {
-                    let decodedData = try JSONDecoder().decode(City.self, from: $0.data)
-                    weather = CityWeather(decodedData: decodedData)
+                    let decodedData = try JSONDecoder().decode(K.self, from: $0.data)
+                    weather = T(decodedData: decodedData)
                 } catch {
                     print(error)
                 }
@@ -37,20 +46,19 @@ struct NetworkManager {
         }
     }
 
-    func performRequestArray(cityIds: String) -> Promise<[CityWeather]?> {
+    func performRequestArray<T: RequestObject, K: DecodableList >(cityIds: String, objectType: T.Type, decodableObjectType: K.Type) -> Promise<[T]?> {
         if let url = URL(string: "\(Constants.weatherAPIArrayPart1)\(cityIds)\(Constants.weatherAPIArrayPart2)") {
             return firstly {
                 URLSession.shared.dataTask(.promise, with: url)
             }.compactMap {
-                var cityWeathers =  [CityWeather]()
+                var cityWeathers =  [T]()
                 do {
-                    let decodedData = try JSONDecoder().decode(WeatherData.self, from: $0.data)
-                    decodedData.list.forEach({item in
-                        let weather = CityWeather(decodedData: item)
+                    let decodedData = try JSONDecoder().decode(K.self, from: $0.data)
+                    for i in 0..<decodedData.list.count {
+                        let weather = T(decodedData: decodedData.list[i])
                         cityWeathers.append(weather)
-                    })
+                    }
                 } catch {
-                    print(error)
                 }
                 return cityWeathers
             }

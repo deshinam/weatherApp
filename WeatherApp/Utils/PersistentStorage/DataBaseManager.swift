@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import PromiseKit
 
 struct DataBaseManager {
 
@@ -19,7 +20,7 @@ struct DataBaseManager {
         return currentUserCities
     }
 
-    mutating func saveCity (newCity: UserCities) {
+    mutating func saveCity(newCity: UserCities) {
         do {
             try realm?.write {
                 realm?.add(newCity, update: .modified)
@@ -28,20 +29,23 @@ struct DataBaseManager {
         }
     }
 
-    func findCityById (cityId: Int) -> UserCities? {
-        return currentUserCities?.filter({ $0.cityId == cityId}).first
-    }
-
-    mutating func deleteCity (city: UserCities) -> Bool {
-        var result = false
-        do {
-            try realm?.write {
-                realm?.delete(city)
-                result = true
-            }
-        } catch {
+    func findCityById(cityId: Int) -> Promise<UserCities?> {
+        var cityById: UserCities?
+        return firstly { () -> Promise<UserCities?> in
+            cityById = currentUserCities?.filter({ $0.cityId == cityId}).first
+            return .value(cityById)
         }
-        return result
     }
 
+    mutating func deleteCity (city: UserCities) -> Promise<Bool> {
+        var result = false
+        return firstly { () -> Promise<Bool> in
+            do {
+                try realm?.write {
+                    realm?.delete(city)
+                    result = true
+                }} catch {}
+            return .value(result)
+        }
+    }
 }

@@ -5,7 +5,7 @@ final class SearchCityInteractor {
 
     // MARK: — Private Properties
     private var citiesDataRepository: CitiesDataRepository = CitiesDataRepository()
-    private var currentCity: CityWeather?
+    private var preferenseStorage = PreferenseStorage()
 }
 
 extension SearchCityInteractor: SearchCityInteractorProtocol {
@@ -15,19 +15,22 @@ extension SearchCityInteractor: SearchCityInteractorProtocol {
 
     func searchCity(cityName: String) -> Promise<Void> {
         citiesDataRepository.fetchWeatherByName(cityName: cityName).done { data in
-            self.currentCity = data
+            if data != nil {
+                self.preferenseStorage.setCurrentCity(currentCity: data!)
+            }
         }
     }
 
     func getCurrentCityName () -> String? {
-        return currentCity?.name
+        return preferenseStorage.getCurrentCity()?.name
     }
 
     func addCity() -> Bool {
-        guard currentCity != nil else {
+        guard let currentCity = preferenseStorage.getCurrentCity()
+        else {
             return false
         }
-        let newCity = UserCities(cityId: currentCity!.cityWeatherId, cityName: currentCity!.name)
+        let newCity = UserCities(cityId: currentCity.cityWeatherId, cityName: currentCity.name)
         citiesDataRepository.saveCity(newCity: newCity)
         return true
     }

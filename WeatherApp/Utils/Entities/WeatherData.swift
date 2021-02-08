@@ -1,7 +1,8 @@
 import Foundation
 
-struct WeatherData: Codable {
-    let list: [City]
+struct WeatherData: DecodableList {
+    typealias T = City
+    var list: [City]
 }
 
 struct City: Codable {

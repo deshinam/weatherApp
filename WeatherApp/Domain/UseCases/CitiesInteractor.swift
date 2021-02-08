@@ -1,23 +1,28 @@
 import Foundation
 import PromiseKit
+import RealmSwift
 
-final class CitiesIntercator {
+final class CitiesInteractor {
 
     // MARK: — Private Properties
     private var citiesDataRepository = CitiesDataRepository()
     private var citiesWeather: [CityWeather]?
 }
 
-extension CitiesIntercator: CitiesInteractorProtocol {
-
+extension CitiesInteractor: CitiesInteractorProtocol {
     private func loadUserCities() -> Promise<[CityWeather]?> {
-        let citiesIdsFromRealm = citiesDataRepository.loadCities()
-        let stringWithCities = citiesIdsFromRealm?.map {String($0.cityId)}.joined(separator: ",") ?? ""
-
-        if stringWithCities == "" {
-            return .value(nil)
-        } else {
-            return self.citiesDataRepository.fetchWeatherById(cityId: stringWithCities)
+        return firstly {() -> Promise<Results<UserCities>?> in
+            let citiesIdsFromRealm = citiesDataRepository.loadCities()
+            return .value(citiesIdsFromRealm)
+        }.compactMap { (citiesIdsFromRealm) -> Promise<String> in
+            let stringWithCities = citiesIdsFromRealm?.map {String($0.cityId)}.joined(separator: ",") ?? ""
+            return .value(stringWithCities)
+        }.then {(stringWithCities) -> Promise<[CityWeather]?>  in
+            if stringWithCities.value == "" {
+                return .value(nil)
+            } else {
+                return self.citiesDataRepository.fetchWeatherById(cityId: stringWithCities.value ?? "")
+            }
         }
     }
 
@@ -26,28 +31,43 @@ extension CitiesIntercator: CitiesInteractorProtocol {
     }
 
     func setUserCities () -> Promise<Void> {
-        loadUserCities().done { data in
+        loadUserCities().map { data in
             self.citiesWeather = data
         }
     }
 
     func deleteCity(index: Int) -> Promise<Void> {
-        let cityId = citiesWeather![index].cityWeatherId
-        if let deletedCity = citiesDataRepository.findCityById(cityId: cityId ) {
-            if  citiesDataRepository.deleteCity(city: deletedCity) {
-                 return setUserCities()
+        return firstly { () -> Promise<UserCities?> in
+            if let cityId = citiesWeather?[index].cityWeatherId {
+                return citiesDataRepository.findCityById(cityId: cityId)
+            } else {
+                return .value(nil)
             }
+        }.compactMap { (deletedCity) -> Promise<Bool> in
+            var result: Promise<Bool> = .value(true)
+            guard deletedCity != nil else {
+                result =  .value(false)
+                return  result
+            }
+            let deletedResult = self.citiesDataRepository.deleteCity(city: deletedCity!)
+            return deletedResult
+        }.then {(result) -> Promise<Void> in
+            if result.value ?? false {
+                return self.setUserCities()
+            }
+            return Promise<Void>()
         }
-        return Promise<Void>()
     }
 
-func getDeletedCityById(index: Int) -> UserCities? {
-    var deletedCity: UserCities?
-    if let cityId = citiesWeather?[index].cityWeatherId {
-        deletedCity = citiesDataRepository.findCityById(cityId: cityId)
+    func getDeletedCityById(index: Int) -> Promise<UserCities?> {
+        if let cityId = citiesWeather?[index].cityWeatherId {
+            return firstly {() -> Promise<UserCities?> in
+                return citiesDataRepository.findCityById(cityId: cityId)
+            }
+        } else {
+            return .value(nil)
+        }
     }
-    return deletedCity
-}
 
     func getCityWeather(id: Int) -> CityWeather? {
         return citiesWeather?[id]
