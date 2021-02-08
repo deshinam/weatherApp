@@ -11,3 +11,5 @@
 #### 2. Frameworks:
 - RealmSwift
 - SwipeCellKit
+- PromiseKit
+- SwiftLint
